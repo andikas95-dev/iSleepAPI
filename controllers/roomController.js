@@ -24,8 +24,8 @@ exports.store = (req, res) => {
 }
 
 exports.update = (req, res) => {
-    var roomname = req.body.roomname;
-    const data = { roomname: roomname, imageRoom: req.file.filename }
+    const { roomname, imageRoom } = req.body;
+    const data = { roomname, imageRoom }
 
     Rooms.update(
         data,
