@@ -8,14 +8,14 @@ exports.index = (req, res) => {
 }
 
 exports.store = (req, res) => {
-    const { name, idNumber, phone } = req.body
+    var { name, idNumber, phone, image } = req.body
     Customers.findOrCreate({
         where: { name },
         defaults: {
             name: name,
             idNumber: idNumber,
             phone: phone,
-            image: req.file.filename,
+            image: image,
             createdAt: new Date(),
             updateAt: new Date()
         }
@@ -24,8 +24,13 @@ exports.store = (req, res) => {
 }
 
 exports.update = (req, res) => {
-    var { name, idNumber, phone } = req.body
-    data = { name: name, idNumber: idNumber, phone: phone, image: req.file.filename }
+    var { name, idNumber, phone, image } = req.body
+    data = {
+        name,
+        idNumber,
+        phone,
+        image
+    }
 
     Customers.update(
         data,
