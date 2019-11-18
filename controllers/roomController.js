@@ -10,12 +10,12 @@ exports.index = (req, res) => {
 }
 
 exports.store = (req, res) => {
-    const { roomname } = req.body
+    const { roomname, imageRoom } = req.body
     Rooms.findOrCreate({
         where: { roomname },
         defaults: {
             roomname: roomname,
-            imageRoom: req.file.filename,
+            imageRoom: imageRoom,
             createdAt: new Date(),
             updateAt: new Date()
         }
