@@ -50,11 +50,11 @@ exports.getUser = (req, res) => {
 
 
 exports.editUser = async (req, res) => {
-    var { username, password } = req.body
+    var { username, password, userImg } = req.body
     data = {
-        username: username,
-        password: password,
-        userImg: req.file.filename
+        username,
+        password,
+        userImg
     }
     User.update(
         data,
@@ -63,6 +63,7 @@ exports.editUser = async (req, res) => {
             defaults: {
                 username: username,
                 password: password,
+                userImg: userImg,
                 updateAt: new Date()
             }
         }).then(result => res.send(result))

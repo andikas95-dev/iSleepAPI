@@ -25,7 +25,7 @@ exports.store = (req, res) => {
 
 exports.update = (req, res) => {
     var { name, idNumber, phone, image } = req.body
-    data = {
+    const data = {
         name,
         idNumber,
         phone,
